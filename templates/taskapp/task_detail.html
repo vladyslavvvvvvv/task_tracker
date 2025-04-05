@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>{{task.title}}</p>
+<p>{{task.description}}</p>
+<p>{{task.status}}</p>
+<p>{{task.priority}}</p>
+<p>{{task.due_to}}</p>
+
+<a href="{% url 'task-edit' task.id %}">Edit new task</a>
+
+{% endblock %}
