@@ -4,7 +4,12 @@
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="send">
+    <nav>
+        <form>
+          <button class="btn btn-outline-success me-2" type="submit" value="send">submit</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="history.back()" >Go Back</button>
+        </form>
+      </nav>
 
 </form>
 {% endblock %}

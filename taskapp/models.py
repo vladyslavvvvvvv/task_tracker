@@ -23,3 +23,12 @@ class Task(models.Model):
 
     due_to = models.DateTimeField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    task = models.ForeignKey(Task,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    edited_at = models.DateTimeField(auto_now_add=True, blank=True)
+    comment_pics = models.FileField(upload_to="comments_pics/", blank=True, null=True)

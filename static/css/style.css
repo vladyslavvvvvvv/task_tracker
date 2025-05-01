@@ -1,0 +1,14 @@
+
+body {
+    padding-inline: 15px;
+    
+}
+.vlad{
+    padding: 0.1cm; color:rgb(234, 180, 115);
+}
+.detailline{
+    font-weight: 100;
+}
+ul{
+    list-style-type: none;
+}

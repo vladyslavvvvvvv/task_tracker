@@ -1,12 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<p>
+<hr class="detailline">
 <p>{{task.title}}</p>
+<hr class="detailline">
 <p>{{task.description}}</p>
-<p>{{task.status}}</p>
+<hr class="detailline">
+<p style="text-decoration: underline;">{{task.status}}</p>
+<hr class="detailline">
 <p>{{task.priority}}</p>
+<hr class="detailline">
 <p>{{task.due_to}}</p>
+<hr class="detailline">
+</p>
+<p>
+    <button type="button" class="btn btn-warning"><a href="{% url 'task-edit' task.id %}" style="color: white;">Edit new task</a></button>
+</p>
+<p>
+    <button type="button" class="btn btn-danger"><a href="{% url 'task-delete' task.pk %}" style="color: white;">Delete the task</a></button>
+</p>
+<hr>
 
-<a href="{% url 'task-edit' task.id %}">Edit new task</a>
+{% for comment in task.comment_set.all %}
+    <li>
+        <p>The person who created the comment: {{comment.user}}</p>
+        <p style="font-family: 'Times New Roman', Times, serif; text-align: center;   border: 1px solid gray; padding: 8px; background-color: whitesmoke; padding: 0.1cm;">{{comment.content}}</p>
+        <p>created at: {{comment.created_at}}</p>
+        {% if comment.comment_pics %}
+        <p><img src="{{comment.comment_pics.url}}" width="500px" alt="couldnt load the file"></p>
+        {% endif %}
+    </li>
+    <hr>
 
+{% endfor %}
+
+
+<p>
+{% if user.is_authenticated %}
+<div>
+    <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{form}}
+        <p style="padding: 5mm;">
+        <button type="submit" value="send" class="btn btn-outline-success" style="font-family:  Arial, Helvetica, sans-serif; font-size: larger;">Submit</button>
+        </p>
+    </form>
+
+</div>
+</p>
+{% endif %}
 {% endblock %}

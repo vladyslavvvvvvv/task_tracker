@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<ul>
+<p style="position: absolute;text-align: center;">
+<ul class = "vlad">
     {% for task in all_tasks %}
-        <li>
+        <li style="font-size: larger;">
             <a href="{% url  'task-detail' task.pk %}">{{task}}</a>
         </li>
     {% endfor %}
 </ul>
-<a href="{% url 'task-create' %}">Create new task</a>
-
+<button type="button" class="btn btn-success"><a href="{% url 'task-create' %}" style="font-size: x-large; color: white;">Create new task</a></button>
+</p>
+<p><hr></p>
+<p style="font-family: 'Times New Roman', Times, serif; text-align: center;   border: 1px solid gray; padding: 8px; background-color: whitesmoke; padding: 0.1cm;">Task Tracker - це цифровий інструмент, створений за допомогою технології Django, яка є фреймворком для створення веб-додатків.
+    Уявіть собі Django як набір будівельних блоків, які розробники використовують для створення таких додатків, як Task Tracker.
+   У Django вам не обов'язково включати статичні файли, такі як CSS, у ваш проект, але це є загальноприйнятою практикою</p>
 {% endblock %}
